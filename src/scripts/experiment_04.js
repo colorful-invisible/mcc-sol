@@ -1,34 +1,43 @@
 import p5 from "p5";
 import * as brush from "p5.brush";
 
+import { randomFromArray } from "./utils";
+
 new p5((sk) => {
   let seed = 0;
-  let length = 72;
+  let length = window.innerWidth / 16;
   let hl = length / 2;
 
   let strokeBrushes = ["2B", "charcoal", "HB", "2H", "marker", "marker2"];
-  const selectRandomBrush = () =>
-    strokeBrushes[Math.floor(sk.random(strokeBrushes.length))];
+  let colors = ["white", "black", "gray"];
 
-  let colors = [
-    "#3a5fb8",
-    "#43baea",
-    "#f26d96",
-    "#6c362f",
-    "#342c28",
-    "#e32611",
-    "#e6edff",
-    "#1daa65",
-  ];
+  // let colors = [
+  //   "#d23723",
+  //   "#fc572d",
+  //   "#cc3388",
+  //   "#5cc645",
+  //   "#a4217a",
+  //   "#158695",
+  //   "#20b4c2",
+  // ];
 
-  const selectRandomColor = () => colors[Math.floor(sk.random(colors.length))];
+  // let colors = [
+  //   "#3a5fb8",
+  //   "#43baea",
+  //   "#f26d96",
+  //   "#6c362f",
+  //   "#342c28",
+  //   "#e32611",
+  //   "#e6edff",
+  //   "#1daa65",
+  // ];
 
   function drawRandomLine(x, y, length = 60) {
     const lineOptions = [
-      { color: "black", coordinates: [hl, 0, hl, length] },
-      { color: "yellow", coordinates: [0, hl, length, hl] },
-      { color: "blue", coordinates: [0, 0, length, length] },
-      { color: "red", coordinates: [length, 0, 0, length] },
+      { coordinates: [hl, 0, hl, length] },
+      { coordinates: [0, hl, length, hl] },
+      { coordinates: [0, 0, length, length] },
+      { coordinates: [length, 0, 0, length] },
     ];
 
     const drawLine = ({ coordinates }, randomBrush) => {
@@ -36,29 +45,29 @@ new p5((sk) => {
       brush.push();
       brush.set(
         randomBrush,
-        selectRandomColor(),
-        sk.randomGaussian(1) * 1.95 + 0.05
+        randomFromArray(sk, colors),
+        // sk.randomGaussian(1) * 1.95 + 0.05
+        0.3
       );
       brush.line(x1, y1, x2, y2);
       brush.pop();
     };
 
-    const randomIndex = () => Math.floor(sk.random(lineOptions.length));
     const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
-
-    const randomBrush = selectRandomBrush();
+    const randomBrush = randomFromArray(sk, strokeBrushes);
 
     sk.push();
     sk.translate(x, y);
+
     for (let i = 0; i < linesPerSquare; i++) {
-      drawLine(lineOptions[randomIndex()], randomBrush);
+      drawLine(randomFromArray(sk, lineOptions), randomBrush);
     }
     sk.pop();
   }
 
   function drawSquare(x, y, length = 60) {
-    const randomBrush = selectRandomBrush();
-    const randomColor = selectRandomColor();
+    const randomBrush = randomFromArray(sk, strokeBrushes);
+    const randomColor = randomFromArray(sk, colors);
 
     brush.push();
     brush.set("2B", randomColor, 0.5);
@@ -80,7 +89,7 @@ new p5((sk) => {
     sk.background("white");
     sk.frameRate(30);
 
-    backgroundColor = selectRandomColor();
+    backgroundColor = randomFromArray(sk, colors);
   };
 
   sk.draw = () => {

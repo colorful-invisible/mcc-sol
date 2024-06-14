@@ -1,7 +1,7 @@
-// ---- RANDOM COLOR
-// -----------------
-function randomColor(colors) {
-  return colors[Math.floor(Math.random() * colors.length)];
+// ---- RETURN RANDOM
+// ------------------
+function randomFromArray(sk, array) {
+  return array[Math.floor(sk.random(array.length))];
 }
 
 // ---- SINOIDAL PULSE
@@ -166,4 +166,4 @@ function createAndSetupTextures(options) {
   });
 }
 
-export { pulse };
+export { randomFromArray };

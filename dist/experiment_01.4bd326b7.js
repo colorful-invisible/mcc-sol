@@ -676,13 +676,13 @@ new (0, _p5Default.default)((sk)=>{
 });
 
 },{"p5":"7Uk5U","./utils":"bVlgj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bVlgj":[function(require,module,exports) {
-// ---- RANDOM COLOR
-// -----------------
+// ---- RETURN RANDOM
+// ------------------
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "pulse", ()=>pulse);
-function randomColor(colors) {
-    return colors[Math.floor(Math.random() * colors.length)];
+parcelHelpers.export(exports, "randomFromArray", ()=>randomFromArray);
+function randomFromArray(sk, array) {
+    return array[Math.floor(sk.random(array.length))];
 }
 // ---- SINOIDAL PULSE
 // -------------------

@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
           await import("./experiment_02.js");
           break;
         case "experiment-03":
+          await import("./experiment_03.js");
+          break;
+        case "experiment-04":
           await import("./experiment_04.js");
           break;
         default:
