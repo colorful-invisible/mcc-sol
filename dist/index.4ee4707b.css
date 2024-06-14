@@ -1,0 +1,65 @@
+@import "https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 24px;
+}
+
+body {
+  font-optical-sizing: auto;
+  font-family: Josefin Sans, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+main {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+
+canvas {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.versions {
+  color: "black";
+  opacity: .5;
+  flex-direction: row;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.versions:hover {
+  opacity: 1;
+}
+
+.versions a {
+  color: #000;
+  text-decoration: none;
+}
+
+.versions a:hover, .versions a.active {
+  text-decoration: underline;
+}
+
+.info {
+  font-size: .75rem;
+}
+/*# sourceMappingURL=index.4ee4707b.css.map */
