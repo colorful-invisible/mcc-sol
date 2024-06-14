@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
           await import("./experiment_02.js");
           break;
         case "experiment-03":
-          await import("./experiment_03.js");
+          await import("./experiment_04.js");
           break;
         default:
           console.log(`No specific script found for the page: ${page}`);

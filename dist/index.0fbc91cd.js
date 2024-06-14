@@ -595,7 +595,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
                     await require("420e84970146f5f4");
                     break;
                 case "experiment-03":
-                    await require("92130ea26ea42a53");
+                    await require("549d4e5e820b036f");
                     break;
                 default:
                     console.log(`No specific script found for the page: ${page}`);
@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     loadScript(currentPage);
 });
 
-},{"4efe370df087350":"jgg9m","420e84970146f5f4":"h6hyg","92130ea26ea42a53":"kQdBz"}],"jgg9m":[function(require,module,exports) {
+},{"4efe370df087350":"jgg9m","420e84970146f5f4":"h6hyg","549d4e5e820b036f":"kUTvB"}],"jgg9m":[function(require,module,exports) {
 module.exports = Promise.all([
     require("69edf1c5ccd0358d")(require("1abd5c64a950bee8").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
@@ -734,22 +734,22 @@ module.exports = Promise.all([
     })
 ]).then(()=>module.bundle.root("4loMn"));
 
-},{"9fc251fe5193fd8c":"61B45","73e10c7a45d46c6a":"lgJ39"}],"kQdBz":[function(require,module,exports) {
+},{"9fc251fe5193fd8c":"61B45","73e10c7a45d46c6a":"lgJ39"}],"kUTvB":[function(require,module,exports) {
 module.exports = Promise.all([
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
+    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
+    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_03.71174c6b.js" + "?" + Date.now()).catch((err)=>{
+    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_04.59096dd5.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     })
-]).then(()=>module.bundle.root("hqTWI"));
+]).then(()=>module.bundle.root("8zABk"));
 
-},{"602051bfdb634fac":"61B45","dd51d71368a91321":"lgJ39"}]},["h9Rts","fFaKF"], "fFaKF", "parcelRequire94c2")
+},{"a454792c27f2b878":"61B45","5b5b7aeb4d2e2933":"lgJ39"}]},["h9Rts","fFaKF"], "fFaKF", "parcelRequire94c2")
 
 //# sourceMappingURL=index.0fbc91cd.js.map

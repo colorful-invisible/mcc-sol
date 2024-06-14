@@ -31,10 +31,14 @@ new p5((sk) => {
       { color: "red", coordinates: [length, 0, 0, length] },
     ];
 
-    const drawLine = ({ color, coordinates }, randomBrush) => {
+    const drawLine = ({ coordinates }, randomBrush) => {
       const [x1, y1, x2, y2] = coordinates;
       brush.push();
-      brush.set(randomBrush, color, sk.random(1) * 1.95 + 0.05);
+      brush.set(
+        randomBrush,
+        selectRandomColor(),
+        sk.randomGaussian(1) * 1.95 + 0.05
+      );
       brush.line(x1, y1, x2, y2);
       brush.pop();
     };
@@ -54,10 +58,11 @@ new p5((sk) => {
 
   function drawSquare(x, y, length = 60) {
     const randomBrush = selectRandomBrush();
+    const randomColor = selectRandomColor();
 
     brush.push();
-    brush.set("2B", "black", 0.5);
-    brush.setHatch(randomBrush, "magenta");
+    brush.set("2B", randomColor, 0.5);
+    brush.setHatch(randomBrush, randomColor);
     brush.hatch(length / 4, sk.random(0, 90));
     brush.rect(x, y, length, length);
     brush.pop();
@@ -65,17 +70,21 @@ new p5((sk) => {
 
   brush.instance(sk);
 
+  let backgroundColor = "white";
+
   sk.setup = () => {
     sk.createCanvas(length * 16, length * 8, sk.WEBGL);
     brush.load();
     brush.field("truncated");
     sk.angleMode(sk.DEGREES);
     sk.background("white");
-    // sk.noLoop();
+    sk.frameRate(30);
+
+    backgroundColor = selectRandomColor();
   };
 
   sk.draw = () => {
-    sk.background("lightgray");
+    sk.background(backgroundColor);
 
     sk.translate(-sk.width / 2, -sk.height / 2);
 
