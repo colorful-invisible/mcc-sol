@@ -5,21 +5,26 @@ import { randomFromArray } from "./utils";
 
 new p5((sk) => {
   let seed = 0;
-  let length = window.innerWidth / 16;
+  let length = 72;
   let hl = length / 2;
 
   let strokeBrushes = ["2B", "charcoal", "HB", "2H", "marker", "marker2"];
-  let colors = ["white", "black", "gray"];
+  let backgroundColors = ["white", "black"];
+  let colors = [
+    "#191a1e",
+    "#fcbaee",
+    "#d8e191",
+    "#267dc5",
+    "#3bb941",
+    "#b3d3c3",
+    "#fcbaee",
+    "#d8e191",
+    "#267dc5",
+    "#3bb941",
+    "#FFFFFF",
+  ];
 
-  // let colors = [
-  //   "#d23723",
-  //   "#fc572d",
-  //   "#cc3388",
-  //   "#5cc645",
-  //   "#a4217a",
-  //   "#158695",
-  //   "#20b4c2",
-  // ];
+  // let colors = ["white", "black", "gray"];
 
   // let colors = [
   //   "#3a5fb8",
@@ -46,14 +51,21 @@ new p5((sk) => {
       brush.set(
         randomBrush,
         randomFromArray(sk, colors),
-        // sk.randomGaussian(1) * 1.95 + 0.05
-        0.3
+        sk.randomGaussian(2) + 0.05
       );
       brush.line(x1, y1, x2, y2);
       brush.pop();
     };
 
-    const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
+    const linesPerSquare =
+      sk.random() < 0.05
+        ? 4
+        : sk.random() < 0.1
+        ? 3
+        : sk.random() < 0.4
+        ? 2
+        : 1;
+
     const randomBrush = randomFromArray(sk, strokeBrushes);
 
     sk.push();
@@ -82,14 +94,14 @@ new p5((sk) => {
   let backgroundColor = "white";
 
   sk.setup = () => {
-    sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+    sk.createCanvas(length * 12, length * 8, sk.WEBGL);
     brush.load();
     brush.field("truncated");
     sk.angleMode(sk.DEGREES);
     sk.background("white");
     sk.frameRate(30);
 
-    backgroundColor = randomFromArray(sk, colors);
+    backgroundColor = randomFromArray(sk, backgroundColors);
   };
 
   sk.draw = () => {

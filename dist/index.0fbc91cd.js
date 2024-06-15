@@ -610,21 +610,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
     let currentPage = window.location.pathname.split("/").pop().replace(".html", "");
     if (!currentPage) currentPage = "index";
     loadScript(currentPage);
+    infoToggle();
 });
+function infoToggle() {
+    const infoToggler = document.getElementById("info-toggle");
+    const infoWindow = document.getElementById("info-wrapper");
+    infoToggler.addEventListener("click", ()=>{
+        infoWindow.classList.toggle("is-visible");
+    });
+}
 
-},{"4efe370df087350":"jgg9m","420e84970146f5f4":"h6hyg","549d4e5e820b036f":"kUTvB","92130ea26ea42a53":"kQdBz"}],"jgg9m":[function(require,module,exports) {
+},{"4efe370df087350":"aylrl","420e84970146f5f4":"fLQ6i","549d4e5e820b036f":"29rBb","92130ea26ea42a53":"5Ayth"}],"aylrl":[function(require,module,exports) {
 module.exports = Promise.all([
-    require("69edf1c5ccd0358d")(require("1abd5c64a950bee8").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
+    require("3dacfcf59646c2ee")(require("f625cf746f3bc14d").getBundleURL("9up4p") + "experiment_01.72fe4f87.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("69edf1c5ccd0358d")(require("1abd5c64a950bee8").getBundleURL("9up4p") + "experiment_01.4bd326b7.js" + "?" + Date.now()).catch((err)=>{
+    require("3dacfcf59646c2ee")(require("f625cf746f3bc14d").getBundleURL("9up4p") + "experiment_01.4bd326b7.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     })
 ]).then(()=>module.bundle.root("5Piym"));
 
-},{"69edf1c5ccd0358d":"61B45","1abd5c64a950bee8":"lgJ39"}],"61B45":[function(require,module,exports) {
+},{"3dacfcf59646c2ee":"61B45","f625cf746f3bc14d":"lgJ39"}],"61B45":[function(require,module,exports) {
 "use strict";
 var cacheLoader = require("ca2a84f7fa4a3bb0");
 module.exports = cacheLoader(function(bundle) {
@@ -721,54 +729,54 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"h6hyg":[function(require,module,exports) {
+},{}],"fLQ6i":[function(require,module,exports) {
 module.exports = Promise.all([
-    require("9fc251fe5193fd8c")(require("73e10c7a45d46c6a").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
+    require("7c19e9c52c296194")(require("87bd7c2cffe2170c").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("9fc251fe5193fd8c")(require("73e10c7a45d46c6a").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
+    require("7c19e9c52c296194")(require("87bd7c2cffe2170c").getBundleURL("9up4p") + "experiment_01.72fe4f87.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("9fc251fe5193fd8c")(require("73e10c7a45d46c6a").getBundleURL("9up4p") + "experiment_02.d0bf15d5.js" + "?" + Date.now()).catch((err)=>{
+    require("7c19e9c52c296194")(require("87bd7c2cffe2170c").getBundleURL("9up4p") + "experiment_02.d0bf15d5.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     })
 ]).then(()=>module.bundle.root("4loMn"));
 
-},{"9fc251fe5193fd8c":"61B45","73e10c7a45d46c6a":"lgJ39"}],"kUTvB":[function(require,module,exports) {
+},{"7c19e9c52c296194":"61B45","87bd7c2cffe2170c":"lgJ39"}],"29rBb":[function(require,module,exports) {
 module.exports = Promise.all([
-    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
+    require("d983072a4e100a")(require("5c1199a09641f17e").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
+    require("d983072a4e100a")(require("5c1199a09641f17e").getBundleURL("9up4p") + "experiment_01.72fe4f87.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("a454792c27f2b878")(require("5b5b7aeb4d2e2933").getBundleURL("9up4p") + "experiment_04.59096dd5.js" + "?" + Date.now()).catch((err)=>{
+    require("d983072a4e100a")(require("5c1199a09641f17e").getBundleURL("9up4p") + "experiment_04.59096dd5.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     })
 ]).then(()=>module.bundle.root("8zABk"));
 
-},{"a454792c27f2b878":"61B45","5b5b7aeb4d2e2933":"lgJ39"}],"kQdBz":[function(require,module,exports) {
+},{"d983072a4e100a":"61B45","5c1199a09641f17e":"lgJ39"}],"5Ayth":[function(require,module,exports) {
 module.exports = Promise.all([
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
+    require("89f096816467f80f")(require("34347fff8cd9fddb").getBundleURL("9up4p") + "experiment_02.dbe094f6.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_01.dd645c69.js" + "?" + Date.now()).catch((err)=>{
+    require("89f096816467f80f")(require("34347fff8cd9fddb").getBundleURL("9up4p") + "experiment_01.72fe4f87.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     }),
-    require("602051bfdb634fac")(require("dd51d71368a91321").getBundleURL("9up4p") + "experiment_03.71174c6b.js" + "?" + Date.now()).catch((err)=>{
+    require("89f096816467f80f")(require("34347fff8cd9fddb").getBundleURL("9up4p") + "experiment_03.71174c6b.js" + "?" + Date.now()).catch((err)=>{
         delete module.bundle.cache[module.id];
         throw err;
     })
 ]).then(()=>module.bundle.root("hqTWI"));
 
-},{"602051bfdb634fac":"61B45","dd51d71368a91321":"lgJ39"}]},["h9Rts","fFaKF"], "fFaKF", "parcelRequire94c2")
+},{"89f096816467f80f":"61B45","34347fff8cd9fddb":"lgJ39"}]},["h9Rts","fFaKF"], "fFaKF", "parcelRequire94c2")
 
 //# sourceMappingURL=index.0fbc91cd.js.map

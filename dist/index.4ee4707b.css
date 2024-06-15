@@ -6,7 +6,7 @@
 }
 
 html {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 body {
@@ -14,9 +14,11 @@ body {
   font-family: Josefin Sans, sans-serif;
   font-style: normal;
   font-weight: 400;
+  line-height: 1.25;
 }
 
 main {
+  background-color: #f2f2f2;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -25,41 +27,105 @@ main {
 }
 
 canvas {
-  z-index: -1;
+  z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.versions {
-  color: "black";
-  opacity: .5;
+#info-toggle {
+  z-index: 200;
+  cursor: pointer;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: .75rem;
-  padding: 1rem;
-  font-size: 1rem;
+  gap: .5rem;
   display: flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
 }
 
-.versions:hover {
-  opacity: 1;
+#info-toggle:before {
+  content: "";
+  background-color: #0000;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: .25rem;
+  height: .25rem;
+  animation: 2s infinite blink;
+  transform: translateY(-3px);
 }
 
-.versions a {
+@keyframes blink {
+  0% {
+    background-color: #0000;
+  }
+
+  50% {
+    background-color: #000;
+  }
+
+  100% {
+    background-color: #0000;
+  }
+}
+
+#info-wrapper {
+  z-index: 100;
+  background-color: #fff;
+  border-left: 4px solid #000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+  padding: 6rem 1rem 4rem 2rem;
+  transition: right .2s ease-out;
+  position: fixed;
+  top: 0;
+  right: -25%;
+}
+
+#info-wrapper.is-visible {
+  right: 0;
+}
+
+#info-wrapper h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+#info-wrapper p, #info-wrapper ul, #info-wrapper ol {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+#info-wrapper ul, #info-wrapper ol {
+  list-style-position: inside;
+}
+
+.version-links {
+  flex-direction: row;
+  gap: .5rem;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.version-links h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  display: block;
+}
+
+.version-links a {
   color: #000;
   text-decoration: none;
 }
 
-.versions a:hover, .versions a.active {
+.version-links a:hover, .version-links a.active {
   text-decoration: underline;
-}
-
-.info {
-  font-size: .75rem;
 }
 /*# sourceMappingURL=index.4ee4707b.css.map */

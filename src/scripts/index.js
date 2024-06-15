@@ -32,4 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadScript(currentPage);
+
+  infoToggle();
 });
+
+function infoToggle() {
+  const infoToggler = document.getElementById("info-toggle");
+  const infoWindow = document.getElementById("info-wrapper");
+  infoToggler.addEventListener("click", () => {
+    infoWindow.classList.toggle("is-visible");
+  });
+}

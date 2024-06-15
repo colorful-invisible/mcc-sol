@@ -1,5 +1,6 @@
 import p5 from "p5";
 import * as brush from "p5.brush";
+import { randomFromArray } from "./utils";
 
 new p5((sk) => {
   let seed = 0;
@@ -7,21 +8,6 @@ new p5((sk) => {
   let hl = length / 2;
 
   let strokeBrushes = ["2B", "charcoal", "HB", "2H", "marker", "marker2"];
-  const selectRandomBrush = () =>
-    strokeBrushes[Math.floor(sk.random(strokeBrushes.length))];
-
-  let colors = [
-    "#3a5fb8",
-    "#43baea",
-    "#f26d96",
-    "#6c362f",
-    "#342c28",
-    "#e32611",
-    "#e6edff",
-    "#1daa65",
-  ];
-
-  const selectRandomColor = () => colors[Math.floor(sk.random(colors.length))];
 
   function drawRandomLine(x, y, length = 60) {
     const lineOptions = [
@@ -34,31 +20,32 @@ new p5((sk) => {
     const drawLine = ({ color, coordinates }, randomBrush) => {
       const [x1, y1, x2, y2] = coordinates;
       brush.push();
-      brush.set(randomBrush, color, sk.random(1) * 1.95 + 0.05);
+      brush.set(randomBrush, color, sk.random() * 1.95 + 0.05);
       brush.line(x1, y1, x2, y2);
       brush.pop();
     };
 
-    const randomIndex = () => Math.floor(sk.random(lineOptions.length));
-    const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
-
-    const randomBrush = selectRandomBrush();
+    const linesPerSquare =
+      sk.random() < 0.05
+        ? 4
+        : sk.random() < 0.1
+        ? 3
+        : sk.random() < 0.4
+        ? 2
+        : 1;
+    const randomBrush = randomFromArray(sk, strokeBrushes);
 
     sk.push();
     sk.translate(x, y);
     for (let i = 0; i < linesPerSquare; i++) {
-      drawLine(lineOptions[randomIndex()], randomBrush);
+      drawLine(randomFromArray(sk, lineOptions), randomBrush);
     }
     sk.pop();
   }
 
   function drawSquare(x, y, length = 60) {
-    const randomBrush = selectRandomBrush();
-
     brush.push();
-    brush.set("2B", "black", 0.5);
-    brush.setHatch(randomBrush, "magenta");
-    brush.hatch(length / 4, sk.random(0, 90));
+    brush.set("charcoal", "black", 0.5);
     brush.rect(x, y, length, length);
     brush.pop();
   }
@@ -66,16 +53,16 @@ new p5((sk) => {
   brush.instance(sk);
 
   sk.setup = () => {
-    sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+    sk.createCanvas(length * 8, length * 8, sk.WEBGL);
     brush.load();
-    brush.field("truncated");
+    brush.noField();
     sk.angleMode(sk.DEGREES);
     sk.background("white");
     // sk.noLoop();
   };
 
   sk.draw = () => {
-    sk.background("lightgray");
+    sk.background("white");
 
     sk.translate(-sk.width / 2, -sk.height / 2);
 

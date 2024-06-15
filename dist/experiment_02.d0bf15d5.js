@@ -588,6 +588,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _p5 = require("p5");
 var _p5Default = parcelHelpers.interopDefault(_p5);
 var _p5Brush = require("p5.brush");
+var _utils = require("./utils");
 new (0, _p5Default.default)((sk)=>{
     let seed = 0;
     let length = 72;
@@ -634,27 +635,26 @@ new (0, _p5Default.default)((sk)=>{
         const drawLine = ({ color, coordinates })=>{
             const [x1, y1, x2, y2] = coordinates;
             _p5Brush.push();
-            _p5Brush.set("charcoal", color, 0.2);
+            _p5Brush.set("charcoal", color, 0.7);
             _p5Brush.line(x1, y1, x2, y2);
             _p5Brush.pop();
         };
-        const randomIndex = ()=>Math.floor(sk.random(lineOptions.length));
-        const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
+        const linesPerSquare = sk.random() < 0.05 ? 4 : sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
         sk.push();
         sk.translate(x, y);
-        for(let i = 0; i < linesPerSquare; i++)drawLine(lineOptions[randomIndex()]);
+        for(let i = 0; i < linesPerSquare; i++)drawLine((0, _utils.randomFromArray)(sk, lineOptions));
         sk.pop();
     }
     function drawSquare(x, y, length = 60) {
         _p5Brush.push();
-        _p5Brush.set("2B", "black", 0.5);
+        _p5Brush.set("charcoal", "black", 0.3);
         _p5Brush.noFill();
         _p5Brush.rect(x, y, length, length);
         _p5Brush.pop();
     }
     _p5Brush.instance(sk);
     sk.setup = ()=>{
-        sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+        sk.createCanvas(length * 8, length * 8, sk.WEBGL);
         _p5Brush.load();
         _p5Brush.noField();
         sk.angleMode(sk.DEGREES);
@@ -662,10 +662,10 @@ new (0, _p5Default.default)((sk)=>{
     // sk.noLoop();
     };
     sk.draw = ()=>{
-        sk.background("lightgray");
-        sk.translate(-sk.width / 2, -sk.height / 2);
+        sk.background("white");
         if (sk.frameCount % 90 === 0) seed++;
         sk.randomSeed(seed);
+        sk.translate(-sk.width / 2, -sk.height / 2);
         for(let x = 0; x < sk.width; x += length)for(let y = 0; y < sk.height; y += length){
             drawRandomLine(x, y, length);
             drawSquare(x, y, length);
@@ -673,6 +673,6 @@ new (0, _p5Default.default)((sk)=>{
     };
 });
 
-},{"p5":"7Uk5U","p5.brush":"jrapR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["feUiV"], null, "parcelRequire94c2")
+},{"p5":"7Uk5U","p5.brush":"jrapR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./utils":"bVlgj"}]},["feUiV"], null, "parcelRequire94c2")
 
 //# sourceMappingURL=experiment_02.d0bf15d5.js.map

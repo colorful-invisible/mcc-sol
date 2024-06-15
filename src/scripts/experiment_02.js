@@ -1,5 +1,6 @@
 import p5 from "p5";
 import * as brush from "p5.brush";
+import { randomFromArray } from "./utils";
 
 new p5((sk) => {
   let seed = 0;
@@ -17,25 +18,31 @@ new p5((sk) => {
     const drawLine = ({ color, coordinates }) => {
       const [x1, y1, x2, y2] = coordinates;
       brush.push();
-      brush.set("charcoal", color, 0.2);
+      brush.set("charcoal", color, 0.7);
       brush.line(x1, y1, x2, y2);
       brush.pop();
     };
 
-    const randomIndex = () => Math.floor(sk.random(lineOptions.length));
-    const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
+    const linesPerSquare =
+      sk.random() < 0.05
+        ? 4
+        : sk.random() < 0.1
+        ? 3
+        : sk.random() < 0.4
+        ? 2
+        : 1;
 
     sk.push();
     sk.translate(x, y);
     for (let i = 0; i < linesPerSquare; i++) {
-      drawLine(lineOptions[randomIndex()]);
+      drawLine(randomFromArray(sk, lineOptions));
     }
     sk.pop();
   }
 
   function drawSquare(x, y, length = 60) {
     brush.push();
-    brush.set("2B", "black", 0.5);
+    brush.set("charcoal", "black", 0.3);
     brush.noFill();
     brush.rect(x, y, length, length);
     brush.pop();
@@ -44,7 +51,7 @@ new p5((sk) => {
   brush.instance(sk);
 
   sk.setup = () => {
-    sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+    sk.createCanvas(length * 8, length * 8, sk.WEBGL);
     brush.load();
     brush.noField();
     sk.angleMode(sk.DEGREES);
@@ -53,15 +60,15 @@ new p5((sk) => {
   };
 
   sk.draw = () => {
-    sk.background("lightgray");
-
-    sk.translate(-sk.width / 2, -sk.height / 2);
+    sk.background("white");
 
     if (sk.frameCount % 90 === 0) {
       seed++;
     }
 
     sk.randomSeed(seed);
+
+    sk.translate(-sk.width / 2, -sk.height / 2);
 
     for (let x = 0; x < sk.width; x += length) {
       for (let y = 0; y < sk.height; y += length) {

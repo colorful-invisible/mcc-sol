@@ -588,6 +588,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _p5 = require("p5");
 var _p5Default = parcelHelpers.interopDefault(_p5);
 var _p5Brush = require("p5.brush");
+var _utils = require("./utils");
 new (0, _p5Default.default)((sk)=>{
     let seed = 0;
     let length = 72;
@@ -600,18 +601,6 @@ new (0, _p5Default.default)((sk)=>{
         "marker",
         "marker2"
     ];
-    const selectRandomBrush = ()=>strokeBrushes[Math.floor(sk.random(strokeBrushes.length))];
-    let colors = [
-        "#3a5fb8",
-        "#43baea",
-        "#f26d96",
-        "#6c362f",
-        "#342c28",
-        "#e32611",
-        "#e6edff",
-        "#1daa65"
-    ];
-    const selectRandomColor = ()=>colors[Math.floor(sk.random(colors.length))];
     function drawRandomLine(x, y, length = 60) {
         const lineOptions = [
             {
@@ -654,38 +643,34 @@ new (0, _p5Default.default)((sk)=>{
         const drawLine = ({ color, coordinates }, randomBrush)=>{
             const [x1, y1, x2, y2] = coordinates;
             _p5Brush.push();
-            _p5Brush.set(randomBrush, color, sk.random(1) * 1.95 + 0.05);
+            _p5Brush.set(randomBrush, color, sk.random() * 1.95 + 0.05);
             _p5Brush.line(x1, y1, x2, y2);
             _p5Brush.pop();
         };
-        const randomIndex = ()=>Math.floor(sk.random(lineOptions.length));
-        const linesPerSquare = sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
-        const randomBrush = selectRandomBrush();
+        const linesPerSquare = sk.random() < 0.05 ? 4 : sk.random() < 0.1 ? 3 : sk.random() < 0.4 ? 2 : 1;
+        const randomBrush = (0, _utils.randomFromArray)(sk, strokeBrushes);
         sk.push();
         sk.translate(x, y);
-        for(let i = 0; i < linesPerSquare; i++)drawLine(lineOptions[randomIndex()], randomBrush);
+        for(let i = 0; i < linesPerSquare; i++)drawLine((0, _utils.randomFromArray)(sk, lineOptions), randomBrush);
         sk.pop();
     }
     function drawSquare(x, y, length = 60) {
-        const randomBrush = selectRandomBrush();
         _p5Brush.push();
-        _p5Brush.set("2B", "black", 0.5);
-        _p5Brush.setHatch(randomBrush, "magenta");
-        _p5Brush.hatch(length / 4, sk.random(0, 90));
+        _p5Brush.set("charcoal", "black", 0.5);
         _p5Brush.rect(x, y, length, length);
         _p5Brush.pop();
     }
     _p5Brush.instance(sk);
     sk.setup = ()=>{
-        sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+        sk.createCanvas(length * 8, length * 8, sk.WEBGL);
         _p5Brush.load();
-        _p5Brush.field("truncated");
+        _p5Brush.noField();
         sk.angleMode(sk.DEGREES);
         sk.background("white");
     // sk.noLoop();
     };
     sk.draw = ()=>{
-        sk.background("lightgray");
+        sk.background("white");
         sk.translate(-sk.width / 2, -sk.height / 2);
         if (sk.frameCount % 90 === 0) seed++;
         sk.randomSeed(seed);
@@ -696,6 +681,6 @@ new (0, _p5Default.default)((sk)=>{
     };
 });
 
-},{"p5":"7Uk5U","p5.brush":"jrapR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jpUV3"], null, "parcelRequire94c2")
+},{"p5":"7Uk5U","p5.brush":"jrapR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./utils":"bVlgj"}]},["jpUV3"], null, "parcelRequire94c2")
 
 //# sourceMappingURL=experiment_03.71174c6b.js.map

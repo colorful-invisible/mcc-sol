@@ -7,7 +7,7 @@
 }
 
 html {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  line-height: 1.25;
 }
 
 main {
@@ -23,6 +24,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f2f2f2;
 }
 
 canvas {
@@ -30,39 +32,111 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+  z-index: 1;
 }
 
-.versions {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  padding: 1rem;
-  font-size: 1rem;
-  color: "black";
+/* MENU */
 
+#info-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
 
-  opacity: 0.5;
+  gap: 0.5rem;
+
+  cursor: pointer;
 }
 
-.versions:hover {
-  opacity: 1;
+#info-toggle::before {
+  content: "";
+  width: 0.25rem;
+  height: 0.25rem;
+
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px black solid;
+  border-radius: 50%;
+
+  transform: translateY(-3px);
+
+  animation: blink 2s infinite;
 }
 
-.versions a {
+@keyframes blink {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 1);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+#info-wrapper {
+  position: fixed;
+  top: 0;
+  right: -25%;
+  width: 25%;
+  height: 100%;
+  background-color: white;
+  border-left: 4px solid black;
+  z-index: 100;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 6rem 1rem 4rem 2rem;
+
+  transition: right 0.2s ease-out;
+}
+
+#info-wrapper.is-visible {
+  right: 0;
+}
+
+#info-wrapper h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+#info-wrapper p,
+#info-wrapper ul,
+#info-wrapper ol {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+#info-wrapper ul,
+#info-wrapper ol {
+  list-style-position: inside;
+}
+
+.version-links {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.version-links h3 {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.version-links a {
   color: #000;
   text-decoration: none;
 }
 
-.versions a:hover,
-.versions a.active {
+.version-links a:hover,
+.version-links a.active {
   text-decoration: underline;
-}
-
-.info {
-  font-size: 0.75rem;
 }
