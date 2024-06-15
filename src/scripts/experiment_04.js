@@ -83,8 +83,10 @@ new p5((sk) => {
 
     brush.push();
     brush.set("2B", randomColor, 0.5);
-    brush.setHatch(randomBrush, randomColor);
-    brush.hatch(length / 4, sk.random(0, 90));
+    if (sk.random() < 0.2) {
+      brush.setHatch(randomBrush, randomColor);
+      brush.hatch(length / 4, sk.random(0, 90));
+    }
     brush.rect(x, y, length, length);
     brush.pop();
   }

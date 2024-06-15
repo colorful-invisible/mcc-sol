@@ -683,8 +683,10 @@ new (0, _p5Default.default)((sk)=>{
         const randomColor = (0, _utils.randomFromArray)(sk, colors);
         _p5Brush.push();
         _p5Brush.set("2B", randomColor, 0.5);
-        _p5Brush.setHatch(randomBrush, randomColor);
-        _p5Brush.hatch(length / 4, sk.random(0, 90));
+        if (sk.random() < 0.2) {
+            _p5Brush.setHatch(randomBrush, randomColor);
+            _p5Brush.hatch(length / 4, sk.random(0, 90));
+        }
         _p5Brush.rect(x, y, length, length);
         _p5Brush.pop();
     }
