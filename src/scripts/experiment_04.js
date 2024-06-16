@@ -87,7 +87,6 @@ new p5((sk) => {
     brush.field("truncated");
     sk.angleMode(sk.DEGREES);
     sk.background("white");
-    sk.frameRate(30);
   };
 
   sk.draw = () => {
@@ -95,7 +94,7 @@ new p5((sk) => {
 
     sk.translate(-sk.width / 2, -sk.height / 2);
 
-    if (sk.frameCount % 90 === 0) {
+    if (sk.frameCount % 120 === 0) {
       seed++;
     }
 

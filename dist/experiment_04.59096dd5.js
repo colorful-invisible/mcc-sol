@@ -691,12 +691,11 @@ new (0, _p5Default.default)((sk)=>{
         _p5Brush.field("truncated");
         sk.angleMode(sk.DEGREES);
         sk.background("white");
-        sk.frameRate(30);
     };
     sk.draw = ()=>{
         sk.background("#fafafa");
         sk.translate(-sk.width / 2, -sk.height / 2);
-        if (sk.frameCount % 90 === 0) seed++;
+        if (sk.frameCount % 120 === 0) seed++;
         sk.randomSeed(seed);
         for(let x = 0; x < sk.width; x += length)for(let y = 0; y < sk.height; y += length){
             drawRandomLine(x, y, length);
