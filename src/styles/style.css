@@ -140,3 +140,7 @@ canvas {
 .version-links a.active {
   text-decoration: underline;
 }
+
+.saturate {
+  filter: hue-rotate(5deg) saturate(2);
+}

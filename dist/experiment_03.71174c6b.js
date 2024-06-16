@@ -656,7 +656,7 @@ new (0, _p5Default.default)((sk)=>{
     }
     function drawSquare(x, y, length = 60) {
         _p5Brush.push();
-        _p5Brush.set("charcoal", "black", 0.5);
+        _p5Brush.set("charcoal", "black", 0.4);
         _p5Brush.rect(x, y, length, length);
         _p5Brush.pop();
     }

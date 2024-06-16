@@ -128,4 +128,8 @@ canvas {
 .version-links a:hover, .version-links a.active {
   text-decoration: underline;
 }
+
+.saturate {
+  filter: hue-rotate(5deg) saturate(2);
+}
 /*# sourceMappingURL=index.4ee4707b.css.map */

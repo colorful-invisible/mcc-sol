@@ -601,33 +601,26 @@ new (0, _p5Default.default)((sk)=>{
         "marker",
         "marker2"
     ];
-    let backgroundColors = [
-        "white",
-        "black"
-    ];
     let colors = [
-        "#191a1e",
-        "#fcbaee",
-        "#d8e191",
-        "#267dc5",
-        "#3bb941",
-        "#b3d3c3",
-        "#fcbaee",
-        "#d8e191",
-        "#267dc5",
-        "#3bb941",
-        "#FFFFFF"
+        "black",
+        "yellow",
+        "yellow",
+        "cyan",
+        "cyan",
+        "cyan"
     ];
-    // let colors = ["white", "black", "gray"];
     // let colors = [
-    //   "#3a5fb8",
-    //   "#43baea",
-    //   "#f26d96",
-    //   "#6c362f",
-    //   "#342c28",
-    //   "#e32611",
-    //   "#e6edff",
-    //   "#1daa65",
+    //   "#191a1e",
+    //   "#fcbaee",
+    //   "#d8e191",
+    //   "#267dc5",
+    //   "#3bb941",
+    //   "#b3d3c3",
+    //   "#fcbaee",
+    //   "#d8e191",
+    //   "#267dc5",
+    //   "#3bb941",
+    //   "#FFFFFF",
     // ];
     function drawRandomLine(x, y, length = 60) {
         const lineOptions = [
@@ -682,7 +675,7 @@ new (0, _p5Default.default)((sk)=>{
         const randomBrush = (0, _utils.randomFromArray)(sk, strokeBrushes);
         const randomColor = (0, _utils.randomFromArray)(sk, colors);
         _p5Brush.push();
-        _p5Brush.set("2B", randomColor, 0.5);
+        _p5Brush.set("2B", randomColor, 1);
         if (sk.random() < 0.2) {
             _p5Brush.setHatch(randomBrush, randomColor);
             _p5Brush.hatch(length / 4, sk.random(0, 90));
@@ -691,18 +684,17 @@ new (0, _p5Default.default)((sk)=>{
         _p5Brush.pop();
     }
     _p5Brush.instance(sk);
-    let backgroundColor = "white";
     sk.setup = ()=>{
-        sk.createCanvas(length * 12, length * 8, sk.WEBGL);
+        let canvas = sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+        canvas.elt.classList.add("saturate");
         _p5Brush.load();
         _p5Brush.field("truncated");
         sk.angleMode(sk.DEGREES);
         sk.background("white");
         sk.frameRate(30);
-        backgroundColor = (0, _utils.randomFromArray)(sk, backgroundColors);
     };
     sk.draw = ()=>{
-        sk.background(backgroundColor);
+        sk.background("#fafafa");
         sk.translate(-sk.width / 2, -sk.height / 2);
         if (sk.frameCount % 90 === 0) seed++;
         sk.randomSeed(seed);

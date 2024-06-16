@@ -45,7 +45,7 @@ new p5((sk) => {
 
   function drawSquare(x, y, length = 60) {
     brush.push();
-    brush.set("charcoal", "black", 0.5);
+    brush.set("charcoal", "black", 0.4);
     brush.rect(x, y, length, length);
     brush.pop();
   }

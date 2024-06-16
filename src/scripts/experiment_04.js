@@ -9,32 +9,19 @@ new p5((sk) => {
   let hl = length / 2;
 
   let strokeBrushes = ["2B", "charcoal", "HB", "2H", "marker", "marker2"];
-  let backgroundColors = ["white", "black"];
-  let colors = [
-    "#191a1e",
-    "#fcbaee",
-    "#d8e191",
-    "#267dc5",
-    "#3bb941",
-    "#b3d3c3",
-    "#fcbaee",
-    "#d8e191",
-    "#267dc5",
-    "#3bb941",
-    "#FFFFFF",
-  ];
-
-  // let colors = ["white", "black", "gray"];
-
+  let colors = ["black", "yellow", "yellow", "cyan", "cyan", "cyan"];
   // let colors = [
-  //   "#3a5fb8",
-  //   "#43baea",
-  //   "#f26d96",
-  //   "#6c362f",
-  //   "#342c28",
-  //   "#e32611",
-  //   "#e6edff",
-  //   "#1daa65",
+  //   "#191a1e",
+  //   "#fcbaee",
+  //   "#d8e191",
+  //   "#267dc5",
+  //   "#3bb941",
+  //   "#b3d3c3",
+  //   "#fcbaee",
+  //   "#d8e191",
+  //   "#267dc5",
+  //   "#3bb941",
+  //   "#FFFFFF",
   // ];
 
   function drawRandomLine(x, y, length = 60) {
@@ -82,7 +69,7 @@ new p5((sk) => {
     const randomColor = randomFromArray(sk, colors);
 
     brush.push();
-    brush.set("2B", randomColor, 0.5);
+    brush.set("2B", randomColor, 1);
     if (sk.random() < 0.2) {
       brush.setHatch(randomBrush, randomColor);
       brush.hatch(length / 4, sk.random(0, 90));
@@ -93,21 +80,18 @@ new p5((sk) => {
 
   brush.instance(sk);
 
-  let backgroundColor = "white";
-
   sk.setup = () => {
-    sk.createCanvas(length * 12, length * 8, sk.WEBGL);
+    let canvas = sk.createCanvas(length * 16, length * 8, sk.WEBGL);
+    canvas.elt.classList.add("saturate");
     brush.load();
     brush.field("truncated");
     sk.angleMode(sk.DEGREES);
     sk.background("white");
     sk.frameRate(30);
-
-    backgroundColor = randomFromArray(sk, backgroundColors);
   };
 
   sk.draw = () => {
-    sk.background(backgroundColor);
+    sk.background("#fafafa");
 
     sk.translate(-sk.width / 2, -sk.height / 2);
 
