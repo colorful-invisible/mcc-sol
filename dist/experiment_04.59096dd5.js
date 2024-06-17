@@ -602,12 +602,12 @@ new (0, _p5Default.default)((sk)=>{
         "marker2"
     ];
     let colors = [
-        "black",
+        "#00330E",
+        "#00330E",
         "yellow",
-        "yellow",
-        "cyan",
-        "cyan",
-        "cyan"
+        "#AE0000",
+        "#AE0000",
+        "#AE0000"
     ];
     // let colors = [
     //   "#191a1e",

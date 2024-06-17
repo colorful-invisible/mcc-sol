@@ -9,7 +9,14 @@ new p5((sk) => {
   let hl = length / 2;
 
   let strokeBrushes = ["2B", "charcoal", "HB", "2H", "marker", "marker2"];
-  let colors = ["black", "yellow", "yellow", "cyan", "cyan", "cyan"];
+  let colors = [
+    "#00330E",
+    "#00330E",
+    "yellow",
+    "#AE0000",
+    "#AE0000",
+    "#AE0000",
+  ];
   // let colors = [
   //   "#191a1e",
   //   "#fcbaee",
