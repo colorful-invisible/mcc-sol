@@ -601,27 +601,22 @@ new (0, _p5Default.default)((sk)=>{
         "marker",
         "marker2"
     ];
-    let colors = [
-        "#00330E",
-        "#00330E",
-        "yellow",
-        "#AE0000",
-        "#AE0000",
-        "#AE0000"
-    ];
     // let colors = [
-    //   "#191a1e",
-    //   "#fcbaee",
-    //   "#d8e191",
-    //   "#267dc5",
-    //   "#3bb941",
-    //   "#b3d3c3",
-    //   "#fcbaee",
-    //   "#d8e191",
-    //   "#267dc5",
-    //   "#3bb941",
-    //   "#FFFFFF",
+    //   "#00330E",
+    //   "#00330E",
+    //   "yellow",
+    //   "#AE0000",
+    //   "#AE0000",
+    //   "#AE0000",
     // ];
+    let colors = [
+        "black",
+        "yellow",
+        "yellow",
+        "#00E4E4",
+        "#00E4E4",
+        "#00E4E4"
+    ];
     function drawRandomLine(x, y, length = 60) {
         const lineOptions = [
             {
@@ -660,7 +655,7 @@ new (0, _p5Default.default)((sk)=>{
         const drawLine = ({ coordinates }, randomBrush)=>{
             const [x1, y1, x2, y2] = coordinates;
             _p5Brush.push();
-            _p5Brush.set(randomBrush, (0, _utils.randomFromArray)(sk, colors), sk.randomGaussian(2) + 0.05);
+            _p5Brush.set(randomBrush, (0, _utils.randomFromArray)(sk, colors), sk.noise(2) + 0.05);
             _p5Brush.line(x1, y1, x2, y2);
             _p5Brush.pop();
         };
